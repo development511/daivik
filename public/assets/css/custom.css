@@ -1,0 +1,56 @@
+.field-group .material-radio .dot {
+    left : 12px
+}
+/* .field-group .material-radio {
+    display: inline-block
+} */
+
+/* .field-group .material-radio input, .field-group .material-radio input:hover, .field-group .material-radio input.hover {
+    margin-top: 6px;
+} */
+
+.settings-wrapper .settings-section .settings-panel .settings-form {
+    max-width: 100%;
+}
+
+.signup-wrapper .process-bar .progress-wrap .dot.is-second {
+    left: calc(20% - 19px);
+}
+
+.signup-wrapper .process-bar .progress-wrap .dot.is-sixth {
+    left: calc(40% - 19px);
+}
+
+
+
+.signup-wrapper .process-bar .progress-wrap .dot.is-third {
+    left: calc(60% - 19px);
+}   
+
+
+.signup-wrapper .process-bar .progress-wrap .dot.is-fourth {
+    left: calc(80% - 19px);
+}
+
+.sign_in_options .text{
+    text-align: center;
+    margin-bottom: 0.7rem;
+    display: block
+}
+.login-icons {
+    display: block;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+    margin-bottom: 0.7rem;
+}
+
+.login-icons li {
+    display: inline-block;
+    height: 2rem;
+    width: 2rem;
+    line-height: 2rem;
+    font-size: 1.2rem;
+    border: 1px solid #d3d3d3;
+    border-radius: 100%;
+}
