@@ -11,7 +11,8 @@ class FrontController extends Controller
         $today = date("Y-m-d");
         $diff = date_diff(date_create($dateOfBirth), date_create($today));
         $date =  $diff->format('%y');
-        return view('register',compact('date'));
+       // dd($date);
+        return view('birthday',compact('date'));
     }
    
    

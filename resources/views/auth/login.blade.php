@@ -1,7 +1,7 @@
 @include('layouts.header')
 
 <body class="is-white">
-<form  action="{{ URL::to('/login')}}" method="post">
+<
     <!-- Pageloader -->
     <div class="pageloader"></div>
     <div class="infraloader is-active"></div>
@@ -46,17 +46,21 @@
                             </div>
                             <!--Form-->
                             <div class="login-form">
-                               <!--  <div class="field">
+                                <form method="POST" action="{{ route('login') }}">
+                                    @csrf
+                              <div class="field">
                                     <div class="control">
-                                        <input class="input email-input" type="text" placeholder="Enter mobile No">
+                                        <input id="email" type="email" class="input email-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                        {{-- <input class="input email-input" type="text" placeholder="Enter mobile No"> --}}
                                         <div class="input-icon">
                                             <i data-feather="user"></i>
                                         </div>
                                     </div>
-                                </div> -->
+                                </div> 
 
                                     <!--Field-->
-                                    <div class="field field-group">
+                                    {{-- <div class="field field-group">
                                         <label>Phone Number</label>
                                         <div class="control has-icon">
                                             <input type="text" class="input is-fade" value="">
@@ -64,24 +68,30 @@
                                                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-smartphone"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"></rect><line x1="12" y1="18" x2="12.01" y2="18"></line></svg>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> --}}
                                
-                                <div class="field">
-                                    <div class="control">
-                                        <input class="input password-input" type="password" placeholder="●●●●●●●">
-                                        <div class="input-icon">
-                                            <i data-feather="lock"></i>
+                                    <div class="field">
+                                        <div class="control">
+                                            <input id="password" type="password" class="input password-input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+{{-- 
+                                            <input class="" type="password" placeholder="●●●●●●●"> --}}
+                                            <div class="input-icon">
+                                                <i data-feather="lock"></i>
+                                            </div>
                                         </div>
                                     </div>
-                                </div>
-                                <div class="field">
-                                    <div class="control">
-                                        <a class="button is-solid primary-button raised is-rounded is-fullwidth" >Submit</a>
-                                    </div> <br/>
-                                    <div class="control">
-                                        <a class="button is-solid primary-button raised is-rounded is-fullwidth" href="{{url('register')}}">Register</a>
-                                    </div>                                    
-                                </div>
+                                    <div class="field">
+                                        <div class="control">
+                                            <button type="submit" class="button is-solid primary-button raised is-rounded is-fullwidth">
+                                                {{ __('Login') }}
+                                            </button>
+                                            {{-- <a type="submit" class="button is-solid primary-button raised is-rounded is-fullwidth" >Submit</a> --}}
+                                        </div> <br/>
+                                        <div class="control">
+                                            <a class="button is-solid primary-button raised is-rounded is-fullwidth" href="{{url('register')}}">Register</a>
+                                        </div>                                    
+                                    </div>
+                                </form> 
                             </div>
                           
                         </div>
@@ -90,5 +100,5 @@
             </div>
         </div>
     </div>
-</form>
+
 @include('layouts.footer')

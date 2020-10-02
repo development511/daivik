@@ -1,5 +1,4 @@
 
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -24,7 +23,7 @@
 <body>
 
     <!-- Pageloader -->
-    <div class="pageloader"></div>
+    <div class="pageloader"></div> 
     <div class="infraloader is-active"></div>
     <div class="signup-wrapper">
         
@@ -79,8 +78,7 @@
                                 <img src="assets/img/illustrations/signup/company.svg" alt="">
                                 <h3>Child</h3>
                                 <p>Create a child account to be able to do some awesome things.</p>
-                                <a class="button is-fullwidth is-rounded process-button"
-                                 data-step="step-dot-2">
+                                <a class="button is-fullwidth is-rounded process-button" data-step="step-dot-2">
                                     Continue
                                 </a>
                             </div>
@@ -109,254 +107,176 @@
                 </div>
                 
                 <div id="signup-panel-2" class="process-panel-wrap is-narrow">
-                    <div class="form-panel">
-                        <div class="photo-upload">
-                            <div class="preview">
-                                <a class="upload-button">
-                                    <i data-feather="plus"></i>
-                                </a>
-                                <img id="upload-preview" src="https://via.placeholder.com/150x150"
-                                    data-demo-src="assets/img/avatars/avatar-w.png" alt="">
-                                <form id="profile-pic-dz" class="dropzone is-hidden" action="https://friendkit.cssninja.io/"></form>
-                            </div>
-                            <div class="limitation">
-                                <small>Only images with a size lower than 3MB are allowed.</small>
-                            </div>
-                        </div>
+                <div class="form-panel">
+                    <form method="POST" action="{{ url('user_register') }}">
+                        @csrf
+
                         <div class="field">
-                            <label>First Name</label>
+                            <label for="title">First Name</label>
                             <div class="control">
-                                <input type="text" class="input" placeholder="Enter your first name">
+                            <input id="name" type="text" class="form-control @error('name') is-invalid @enderror input" name="name" value="{{ old('name') }}" required autocomplete="name"  placeholder="Enter your first name" autofocus>
+
+                                @error('name')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
+
                         <div class="field">
                             <label>Last Name</label>
                             <div class="control">
-                                <input type="text" class="input" placeholder="Enter your last name">
+                            <input id="lname" type="text" class="form-control @error('lname') is-invalid @enderror input" name="lname" value="{{ old('lname') }}" required autocomplete="lname" placeholder="Enter your last name" autofocus >
+
+                                @error('lname')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
+
                         <div class="field">
-                            <label>Profile Name</label>
+                            <label for="title">profile Name</label>
                             <div class="control">
-                                <input type="text" class="input" placeholder="Enter your profile name">
+                                <input id="profilename"  type="text" class="form-control @error('profilename') is-invalid @enderror input" name="profilename" value="{{ old('profilename') }}" required autocomplete="profilename" placeholder="Enter your profile name" autofocus>
+                                @error('profilename')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
-                        <div class="field">
-                            <label>Parent's Name</label>
-                            <div class="control">
-                                <input type="text" class="input" placeholder="Enter your parent's name">
-                            </div>
-                        </div>
-                        <div class="field">
-                            <label>Email</label>
-                            <div class="control">
-                                <input type="text" class="input" placeholder="Enter your email address">
-                            </div>
-                        </div>
-                        <div class="field field-group">
-                            <label>City</label>
-                            <div class="control has-icon">
-                                <input type="text" class="input is-fade" value="Melbourne">
-                                <div class="form-icon">
-                                    <i data-feather="map-pin"></i>
-                                </div>
-                            </div>
-                        </div>
-                      
                         
-                        <div class="field field-group">
-                            <label>State</label>
-                            <div class="control has-icon">
-                                <input type="text" class="input is-fade" value="Melbourne">
-                                <div class="form-icon">
-                                    <i data-feather="map-pin"></i>
-                                </div>
-                            </div>
-                        </div>
-                       
-                       
-                        <div class="field field-group is-autocomplete">
-                            <label>District</label>
-                            <div class="control has-icon">
-                                <input id="country-autocpl" type="text" class="input is-fade" value="Australia">
-                                <div class="form-icon">
-                                    <i data-feather="globe"></i>
-                                </div>
+                        <div class="field">
+                            <label for="title">parent Name</label>
+                            <div class="control">
+                                <input id="parentname"  type="text" class="form-control @error('parentname') is-invalid @enderror input" name="parentname" value="{{ old('parentname') }}" required autocomplete="parentname" placeholder="Enter your profile name" autofocus>
+                                @error('parentname')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
-                        <div class="field field-group is-autocomplete">
-                            <label>Country</label>
-                            <div class="control has-icon">
-                                <input id="country-autocpl" type="text" class="input is-fade" value="Australia">
-                                <div class="form-icon">
-                                    <i data-feather="globe"></i>
-                                </div>
+                        <div class="field">
+                            <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
+
+                            <div class="control">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror input" name="email" value="{{ old('email') }}" required autocomplete="email" placeholder="Enter your email id">
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="title">city</label>
+                            <div class="control">
+                                <input id="city"  type="text" class="form-control @error('city') is-invalid @enderror input" name="city" value="{{ old('city') }}" required autocomplete="city" placeholder="Enter your city" autofocus>
+                                @error('city')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="title">state</label>
+                            <div class="control">
+                                <input id="state"  type="text" class="form-control @error('state') is-invalid @enderror input" name="state" value="{{ old('state') }}" required autocomplete="state" placeholder="Enter your state" autofocus>
+                                @error('state')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="title">district</label>
+                            <div class="control">
+                                <input id="district"  type="text" class="form-control @error('district') is-invalid @enderror input" name="district" value="{{ old('district') }}" required autocomplete="district" placeholder="Enter your district" autofocus>
+                                @error('district')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="field">
+                            <label for="title">country</label>
+                            <div class="control">
+                                <input id="country"  type="text" class="form-control @error('country') is-invalid @enderror input" name="country" value="{{ old('country') }}" required autocomplete="country" placeholder="Enter your country" autofocus>
+                                @error('country')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
                        
                         <div class="field">
-                            <label>Address</label>
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
                             <div class="control">
-                                <textarea type="text" class="textarea is-fade" rows="2" placeholder="Fill in your address..." style="margin-top: 0px; margin-bottom: 0px; height: 59px;"></textarea>
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror input" name="password" required autocomplete="new-password" placeholder="Enter your password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
+
                         <div class="field">
-                            <label>Password</label>
-                            <div class="control">
-                                <input type="password" class="input" placeholder="Choose a password">
+                            <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>
+
+                            <div  class="control">
+                                <input id="password_confirmation" type="password_confirmation" class="form-control @error('password_confirmation') is-invalid @enderror input" name="password_confirmation" required autocomplete="new-password_confirmation" placeholder="Enter repeat password">
+
+                                @error('password_confirmation')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
+
                         <div class="field">
-                            <label>Repeat Password</label>
+                            <label for="title">phoneno</label>
                             <div class="control">
-                                <input type="password" class="input" placeholder="Repeat your password">
-                            </div>
-                        </div>
-                        <div class="field">
-                            <label>Phone Number</label>
-                            <div class="control">
-                                <input type="text" class="input" placeholder="Enter your phone number">
+                                <input id="phoneno"  type="text" class="form-control @error('phoneno') is-invalid @enderror input" name="phoneno" value="{{ old('phoneno') }}" required autocomplete="phoneno" placeholder="Enter your phone number" autofocus>
+                                @error('phoneno')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
                             </div>
                         </div>
 
 
-                    </div>
-                
-                    <div class="buttons">
-                        <a class="button is-rounded process-button" data-step="step-dot-1">Back</a>
-                        <a class="button is-rounded process-button is-next" data-step="step-dot-6">Next</a>
-                    </div>
-                </div>
-
-                <div id="signup-panel-6" class="process-panel-wrap is-narrow">
-                    <div class="form-panel">
                        
-                        <div class="field field-group">
-                            <label>City</label>
-                            <div class="control has-icon">
-                                <input type="text" class="input is-fade" value="Melbourne">
-                                <div class="form-icon">
-                                    <i data-feather="map-pin"></i>
-                                </div>
+                        <div class="buttons">
+                            <div class="col-md-6 offset-md-4">
+                                <button type="submit" class="button is-fullwidth is-rounded process-button">
+                                    {{ __('Register') }}
+                                </button>
                             </div>
                         </div>
-                      
-                        
-                        <div class="field field-group">
-                            <label>State</label>
-                            <div class="control has-icon">
-                                <input type="text" class="input is-fade" value="Melbourne">
-                                <div class="form-icon">
-                                    <i data-feather="map-pin"></i>
-                                </div>
-                            </div>
-                        </div>
-                       
-                       
-                        <div class="field field-group is-autocomplete">
-                            <label>District</label>
-                            <div class="control has-icon">
-                                <input id="country-autocpl" type="text" class="input is-fade" value="Australia">
-                                <div class="form-icon">
-                                    <i data-feather="globe"></i>
-                                </div>
-                            </div>
-                        </div>
-                       
-                        
-                       
-                        <!--Field-->
-                        <div class="field field-group is-autocomplete">
-                            <label>Country</label>
-                            <div class="control has-icon">
-                                <input id="country-autocpl" type="text" class="input is-fade" value="Australia">
-                                <div class="form-icon">
-                                    <i data-feather="globe"></i>
-                                </div>
-                            </div>
-                        </div>
-                       
-                        <div class="field">
-                            <label>Address</label>
-                            <div class="control">
-                                <textarea type="text" class="textarea is-fade" rows="2" placeholder="Fill in your address..." style="margin-top: 0px; margin-bottom: 0px; height: 59px;"></textarea>
-                            </div>
-                        </div>
-                       
+                    </form>
                     </div>
-                
-                    <div class="buttons">
-                        <a class="button is-rounded process-button" data-step="step-dot-2">Back</a>
-                        <a class="button is-rounded process-button is-next" data-step="step-dot-3">Next</a>
-                    </div>
-                </div>
-                
-                <div id="signup-panel-3" class="process-panel-wrap is-narrow">
-                    <div class="form-panel">
-                        <div class="photo-upload">
-                            <div class="preview">
-                                <a class="upload-button">
-                                    <i data-feather="plus"></i>
-                                </a>
-                                <img id="upload-preview" src="https://via.placeholder.com/150x150"
-                                    data-demo-src="assets/img/avatars/avatar-w.png" alt="">
-                                <form id="profile-pic-dz" class="dropzone is-hidden" action="https://friendkit.cssninja.io/"></form>
-                            </div>
-                            <div class="limitation">
-                                <small>Only images with a size lower than 3MB are allowed.</small>
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="buttons">
-                        <a class="button is-rounded process-button" data-step="step-dot-2">Back</a>
-                        <a class="button is-rounded process-button is-next" data-step="step-dot-4">Next</a>
-                    </div>
-                </div>
-                
-                <div id="signup-panel-4" class="process-panel-wrap is-narrow">
-                    <div class="form-panel">
-                        <div class="field">
-                            <label>Password</label>
-                            <div class="control">
-                                <input type="password" class="input" placeholder="Choose a password">
-                            </div>
-                        </div>
-                        <div class="field">
-                            <label>Repeat Password</label>
-                            <div class="control">
-                                <input type="password" class="input" placeholder="Repeat your password">
-                            </div>
-                        </div>
-                        <div class="field">
-                            <label>Phone Number</label>
-                            <div class="control">
-                                <input type="text" class="input" placeholder="Enter your phone number">
-                            </div>
-                        </div>
-                    </div>
-                
-                    <div class="buttons">
-                        <a class="button is-rounded process-button" data-step="step-dot-3">Back</a>
-                        <a class="button is-rounded process-button is-next" data-step="step-dot-5">Next</a>
-                    </div>
-                </div>
-                
-                <div id="signup-panel-5" class="process-panel-wrap is-narrow">
-                    <div class="form-panel">
-                        <img class="success-image" src="assets/img/illustrations/signup/mailbox.svg" alt="">
-                        <div class="success-text">
-                            <h3>Congratz, you successfully created your account.</h3>
-                            <p> We just sent you a confirmation email. PLease confirm your account within 24 hours.</p>
-                            <a class="button is-fullwidth is-rounded" href="feed.html">Let Me In</a>
-                        </div>
-                    </div>
-                </div>
             </div>
-        </div>
-        
-        
+
+                
         
         <!--Edit Credit card Modal-->
         <div id="crop-modal" class="modal mdl-modal is-small crop-modal is-animated">

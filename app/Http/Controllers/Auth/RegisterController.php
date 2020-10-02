@@ -51,12 +51,20 @@ class RegisterController extends Controller
      */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
+        return Validator::make($data, [  
             'name' => ['required', 'string', 'max:255'],
             'lname' => ['required', 'string', 'max:255'],
             'profilename' => ['required', 'string', 'max:255'],
+            'parentname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8'],
+            'city' => ['required', 'string', 'max:255'],
+            'state' => ['required', 'string', 'max:255'],
+            'district' => ['required', 'string', 'max:255'],
+            'country' => ['required', 'string', 'max:255'],
+             'password' => ['required', 'string', 'min:8'],
+            'repeatpass' => ['required', 'string', 'min:8'],
+            'phoneno' => ['required', 'string', 'max:255'],
+
         ]);
     }
 
@@ -72,18 +80,32 @@ class RegisterController extends Controller
             'name' => $data['name'],
             'lname' => $data['lname'],
             'profilename' => $data['profilename'],
+            'parentname' => $data['parentname'],
             'email' => $data['email'],
+            'city' => $data['city'],
+            'state' => $data['state'],
+            'district' => $data['district'],
+            'country' => $data['country'],
             'password' => Hash::make($data['password']),
+            'repeatpass' => Hash::make($data['password']),
+            'phoneno' => $data['phoneno'],
         ]);
     }
     public function postRegister(Request $request)
-    {  
+    { 
+
         request()->validate([
         'name' => 'required',
         'lname' => 'required',
         'profilename' => 'required',
+        'parentname' => 'required',
+        'city' => 'required',
+        'state' => 'required',
         'email' => 'required|email|unique:users',
-        'password' => 'required|min:6',
+        'district' => 'required',
+        'country' => 'required',
+        'password' => 'required|confirmed|min:6',
+        'phoneno' => 'required',
         ]);
         
         $data = $request->all();
