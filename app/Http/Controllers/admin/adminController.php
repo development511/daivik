@@ -4,6 +4,7 @@ namespace App\Http\Controllers\admin;
 
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use DB;
 
 class adminController extends Controller
 {
@@ -15,24 +16,29 @@ class adminController extends Controller
     public function index()
     {
         //
-        return view('admin.singup');
+        return view('admin.adminLogin');
     }
     public function dashborad()
     {
         //
+        
         return view('admin.dashborad');
     }
 
     public function user()
     {
         //
-        return view('admin.package_register');
+        $result = DB::table('users')->get();
+        // dd($result);
+        // exit();
+        return view('admin.activeuser',compact('result'));
     }
     public function deactive()
     {
         //
         return view('admin.deactive');
     }
+   
     /**
      * Show the form for creating a new resource.
      *
@@ -51,7 +57,7 @@ class adminController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        
     }
 
     /**

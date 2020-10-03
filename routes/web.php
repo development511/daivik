@@ -19,14 +19,14 @@ Route::get('register', function () {
     return view('register');
      
 });
-
-  //Route::post('birthday','FrontController@index');
-  Route::post('user_register','Auth\RegisterController@postRegister');
+ Route::post('singnup', 'Auth\AdminLoginController@adminLogin');
+//   //Route::post('birthday','FrontController@index');
+//   Route::post('user_register','Auth\RegisterController@postRegister');
 // //Adminroute//
-// Route::get('singup','admin\adminController@index' );
-// Route::get('dashborad','admin\adminController@dashborad');
-// Route::get('user','admin\adminController@user');
-// Route::get('deactive','admin\adminController@deactive');
+Route::get('adminLogin','admin\adminController@index');
+Route::get('dashborad','admin\adminController@dashborad');
+Route::get('activeuser','admin\adminController@user');
+Route::get('deactive','admin\adminController@deactive');
 
 
 Auth::routes();

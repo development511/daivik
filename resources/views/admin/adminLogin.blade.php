@@ -23,31 +23,21 @@
                                  </h2>
                              </div>
                              <div class="account-content">
-                                 <form name="" class="form-horizontal" method="post">
-
+                                <form method="POST" action="singnup">
+                                    @csrf
                                      <div class="form-group ">
                                          <div class="col-xs-12">
-                                             <input class="form-control" type="text"  placeholder="Username" name="userName">
+                                            <input id="email" type="email" class="input email-input @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
                                          </div>
                                      </div>
 
                                      <div class="form-group">
                                          <div class="col-xs-12">
-                                             <input class="form-control" type="password"  placeholder="Password" name="">
-                                         </div>
+                                            <input id="password" type="password" class="input password-input @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">                                         </div>
                                      </div>
 
-                                     <div class="form-group">
-                                         <div class="col-xs-12">
-                                             <select class="form-control select2">
-                                                 <option>Select Year</option>
-                                                 <option value="">2016</option>
-                                                 <option value="HI">2017</option>
-                                                 <option value="HI">2018</option>
-                                                 <option value="HI">2019</option>
-                                                 <option value="HI">2020</option>
-                                             </select>
-                                         </div>
+                                    
                                      </div>
 
                                      <div class="form-group text-center m-t-30">
@@ -62,9 +52,10 @@
 
                                      <div class="form-group account-btn text-center m-t-10">
                                          <div class="col-xs-12">
-                                            <a href="dashboard.php" class="btn w-md btn-bordered btn-danger waves-effect waves-light">
-                                             Log In
-                                             </a> 
+                                            <button type="submit" class="btn w-md btn-bordered btn-danger waves-effect waves-light">
+                                                {{ __('Login') }}
+                                            </button>
+                                            
                                          </div>
                                      </div>
 

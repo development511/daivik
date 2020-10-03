@@ -10,9 +10,11 @@
 
 
                 <li class="has_sub">
-                    <a href="javascript:void(0);" class="waves-effect"><i class="ti-layout-grid2"></i><span> System User  </span> <span class="menu-arrow"></span></a>
+                    <a href="javascript:void(0);" class="waves-effect">
+                        <i class="ti-layout-grid2"></i><span> System User  
+                            </span> <span class="menu-arrow"></span></a>
                     <ul class="list-unstyled">
-                        <li><a href="package_register.php">Register User</a></li>
+                        <li><a href="activeuser">Register User</a></li>
                         <li><a href="total_active.php">Total Activate user</a></li>
 
 

@@ -16,8 +16,8 @@
     @include('admin.adminlayout.slidebar')
 
     <div class="content-page">
-        <!-- Start content -->
         <div class="content">
+        <!-- Start content -->
             <div class="container">
                 <div class="row">
                     <div class="col-md-12">
@@ -37,41 +37,51 @@
                                 <thead>
                                 <tr>
                                     <th>SR.NO</th>
-                                    <th>Company name</th>
-                                    <th>Username </th>
+                                    <th>name</th>
+                                    <th>Email</th>
                                     <th>Mobile No</th>
-                                    <th>Whatsapp No</th>
-                                    <th>City Name </th>
-                                    <th> Address</th>
-                                    <th> Zipcode</th>
-                                    <th> Status</th>
-                                    <th> Change Status</th>
+                                    <th>Age</th>
+                                    <th>City</th>
+                                    <th>district</th>
+                                    <th>country</th>
+                                    <th>State</th>
+                                    <th>Type</th>
+                                    <th>Follower</th>
+                                    <th>Likes</th>
+                                    <th>ParentName</th>
+                                    <th>Action</th>
                                 </tr>
                                 </thead>
                                 <tbody>
+                                    @foreach ($result as $item)
                                 <tr>
-                                    <td>1</td>
-                                    <td>Tricube</td>
-                                    <td>Nikunj Patel</td>
-                                    <td>9429812012</td>
-                                    <td>9429812012</td>
-                                    <td>Vadodara</td>
-                                    <td>vadodara</td>
-                                    <td>5000</td>
-                                    <td>
-                                        <p class='text-danger'>Active</p>
-                                    </td>
-                                    <td>
+                                   
+                                    <td>{{ $item->userid }}</td>
+                                    <td>{{ $item->name }}{{ $item->lname }}</td>
+                                    <td>{{ $item->email}}</td>
+                                    <td>{{ $item->phoneno }}</td>
+                                    <td>{{ $item->age }}</td>
+                                    <td>{{ $item->city }}</td>
+                                    <td>{{ $item->district }}</td>
+                                    <td>{{ $item->country }}</td>
+                                    <td>{{ $item->state }}</td>
+                                    <td>{{ $item->profilename }}</td>
+                                    <td>{{ $item->followers }}</td>
+                                    <td>{{ $item->likes }}</td>
 
-                                        <select  id="1" class="selectpicker" data-style="btn-default btn-rounded">
-                                            <option value="0" class='text-info'>Active</option>
-                                            <option value="1" class='text-danger'>Deactivate</option>
-                                            <option value="2" class='text-primary'>On Hold</option>
-                                            <option value="2" class='text-primary'>As Trial</option>
-                                        </select>
+                                    <td>{{ $item->parentname}}</td>
+                                    <td>
+                                        <select class=" form-control form-control-lg">
+                                            <option>A
+                                            </option>
+                                            <option>D</option>
+                                          </select>
                                     </td>
+                                   
+                                  
+                                    
                                 </tr>
-
+                                @endforeach
                                 </tbody>
                             </table>
                         </div>
